@@ -1,8 +1,15 @@
 import React, {useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {connect} from 'react-redux';
+import styled from 'styled-components';
 import {albumsRequest} from '../../actions/albums';
 
+
+const Container = styled.div``;
+
+const ItemContainer = styled.div``;
+
+const TitleContainer = styled.h4``;
 
 const Albums = ({albumsRequest, albums}) => {
     const {id} = useParams();
@@ -12,11 +19,11 @@ const Albums = ({albumsRequest, albums}) => {
     }, [id]);
     
     return (
-        <div>
+        <Container>
             {albums.map(album => {
-                return (<div key={album.id}>{album.title}</div>)
+                return (<ItemContainer key={album.id}><TitleContainer>{album.title}</TitleContainer></ItemContainer>)
             })}
-        </div>
+        </Container>
     );
 };
 

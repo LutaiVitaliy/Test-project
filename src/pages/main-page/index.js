@@ -18,6 +18,21 @@ const OutletContainer = styled.div`
     margin-left: 20px;
 `;
 
+const StyledNavLink = styled(NavLink)`
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+`;
+
+const UserContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`;
+
+const UsernameContainer = styled.div`
+    width: 180px;
+`;
+
 const MainPage = ({usersRequest, users}) => {
     useEffect(() => {
         usersRequest();
@@ -54,11 +69,11 @@ const MainPage = ({usersRequest, users}) => {
                 <input placeholder='Search' value={searchValue} onChange={handleChangeSearchValue}/>
                 <button onClick={handleSortOrderChange}>Change Sort</button>
                 {filteredAndSortedUsers.map(item => {
-                    return <div key={item.id}>
-                        {item.username}
-                        <NavLink to={`/${item.id}/posts`}>Posts</NavLink>
-                        <NavLink to={`/${item.id}/albums`}>Albums</NavLink>
-                    </div>
+                    return <UserContainer key={item.id}>
+                        <UsernameContainer>{item.username}</UsernameContainer>
+                        <StyledNavLink to={`/${item.id}/posts`}>Posts</StyledNavLink>
+                        <StyledNavLink to={`/${item.id}/albums`}>Albums</StyledNavLink>
+                    </UserContainer>
                 })}
             </UsersContainer>
             <OutletContainer>

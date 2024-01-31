@@ -1,6 +1,7 @@
 import baseApi from './axiosParams';
 const path = 'users';
 
+
 const Users = {
 	getUsers: () => {
 		return baseApi.get(`${path}`)
